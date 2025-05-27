@@ -1,17 +1,18 @@
-function powerDigitSum (num, pow) {
-    let curr = 1;
+function powerDigitSum(num, pow) {
+    // let total = BigInt(num) ** BigInt(pow); // Can do like this, instead of while loop and counter var. But not all languages have the ** exponentiation operator.
+    let counter = 0;
     let total = 1n;
-    let sum = 0;
-    while (curr <= pow) {
+    let sum = 0n;
+    
+    while (counter < pow) {
         total *= BigInt(num);
-        curr++;
+        counter++;
     }
-    let arr = total.toString().split("");
-    for (let i = 0; i < arr.length; i++) {
-        sum = sum + Number(arr[i]);
+    let split = total.toString().split('');
+    for (let i = 0; i < split.length; i++) {
+        sum += BigInt(split[i]);
     }
     return sum;
 }
 
 console.log(powerDigitSum(2, 1000));
-
